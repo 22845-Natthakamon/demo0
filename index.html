@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติส่วนตัว - น้องข้าวฟ่าง</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #FFDE4D; /* สีเหลืองที่ชอบ */
+            --primary-hover: #F4CE14;
+            --dark-color: #333333;
+            --light-bg: #F9F9F9;
+            --card-bg: #FFFFFF;
+            --text-muted: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFF7D4 0%, #FFD95A 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ส่วนหัว / พื้นหลังรูปภาพ */
+        .profile-header {
+            background: linear-gradient(to bottom, rgba(255,222,77,0.3), rgba(255,255,255,1));
+            height: 140px;
+            position: relative;
+        }
+
+        /* วงกลมรูปโปรไฟล์ (ใส่ไอคอนแทนรูปจริง) */
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            background-color: var(--primary-color);
+            border: 5px solid #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .avatar-container i {
+            font-size: 50px;
+            color: var(--dark-color);
+        }
+
+        /* ส่วนเนื้อหา */
+        .profile-body {
+            padding: 80px 30px 40px 30px;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .profile-nickname {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 30px;
+            background-color: #FFFBEB;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+            border: 1px solid #FFEAA7;
+        }
+
+        /* รายละเอียดข้อมูล */
+        .info-list {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-bg);
+            padding: 15px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .info-item:hover {
+            background-color: #FFFDF0;
+            border-left: 4px solid var(--primary-hover);
+            padding-left: 16px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .info-icon i {
+            font-size: 18px;
+            color: var(--dark-color);
+        }
+
+        .info-content .label {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .info-content .value {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        /* ตกแต่งสีที่ชอบเป็นพิเศษ */
+        .color-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #FFDE4D;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid #E6C229;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar-container">
+                <i class="fa-solid fa-face-smile-wink"></i>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <h1 class="profile-name">ด.ญ.ณัฐกมล ทาเกิด</h1>
+            <p class="profile-nickname">ชื่อเล่น: <b>ข้าวฟ่าง</b></p>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-cake-candles" style="color: #FF6B6B;"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="label">วันเกิด</span>
+                        <span class="value">9 พฤษภาคม 2554</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-utensils" style="color: #495057;"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="label">อาหารที่ชอบ</span>
+                        <span class="value">ราดหน้า</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-palette" style="color: #F4CE14;"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="label">สีที่ชอบ</span>
+                        <span class="value class=color-badge">
+                            <span class="color-dot"></span>สีเหลือง
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
