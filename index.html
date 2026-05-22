@@ -11,12 +11,13 @@
     
     <style>
         :root {
-            --primary-color: #FFDE4D; /* สีเหลืองที่ชอบ */
-            --primary-hover: #F4CE14;
-            --dark-color: #333333;
-            --light-bg: #F9F9F9;
-            --card-bg: #FFFFFF;
-            --text-muted: #777777;
+            --primary-pastel: #FFF5C2; /* สีเหลืองพาสเทลละมุน */
+            --primary-accent: #FFD23F; /* สีเหลืองสดใสสำหรับเน้น */
+            --bg-gradient-1: #FFF9E6;
+            --bg-gradient-2: #FFDEB4;
+            --dark-color: #4A4A4A;     /* ปรับสีตัวอักษรไม่ให้เข้มเกินไป ดูละมุนขึ้น */
+            --card-bg: rgba(255, 255, 255, 0.85); /* ให้การ์ดโปร่งแสงนิด ๆ แบบกระจก */
+            --text-muted: #8E8E93;
         }
 
         * {
@@ -27,132 +28,160 @@
         }
 
         body {
-            background: linear-gradient(135deg, #FFF7D4 0%, #FFD95A 100%);
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* เอฟเฟกต์แอนิเมชันตอนเปิดหน้าเว็บ */
+        @keyframes popUp {
+            0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
 
         .profile-card {
             background-color: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px); /* ทำพื้นหลังเบลอแบบกระจกฝ้า */
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid #FFFFFF;
+            border-radius: 32px; /* ความโค้งมนเพิ่มความน่ารัก */
+            box-shadow: 0 15px 35px rgba(229, 176, 100, 0.2);
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             overflow: hidden;
             position: relative;
-            transition: transform 0.3s ease;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: all 0.3s ease;
         }
 
         .profile-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(229, 176, 100, 0.3);
         }
 
-        /* ส่วนหัว / พื้นหลังรูปภาพ */
+        /* ส่วนหัวเล่นระดับสีและเพิ่มลายก้อนเมฆอ้อม ๆ */
         .profile-header {
-            background: linear-gradient(to bottom, rgba(255,222,77,0.3), rgba(255,255,255,1));
-            height: 140px;
+            background: linear-gradient(to bottom, #FFEFA6, rgba(255,255,255,0));
+            height: 150px;
             position: relative;
         }
 
-        /* วงกลมรูปโปรไฟล์ (ใส่ไอคอนแทนรูปจริง) */
+        /* วงกลมรูปโปรไฟล์ทรงก้อนเมฆ Squircle */
         .avatar-container {
-            width: 120px;
-            height: 120px;
-            background-color: var(--primary-color);
-            border: 5px solid #ffffff;
-            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #FFF 0%, var(--primary-pastel) 100%);
+            border: 4px solid #ffffff;
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; /* ทรงโค้งมนแบบฟรีฟอร์ม ดูนุ่มฟู */
             position: absolute;
-            bottom: -60px;
+            bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(255, 210, 63, 0.3);
+            animation: float 3s ease-in-out infinite; /* ใส่แอนิเมชันลอยดุ๊กดิ๊ก */
+        }
+
+        @keyframes float {
+            0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; transform: translateX(-50%) translateY(0); }
+            50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; transform: translateX(-50%) translateY(-5px); }
         }
 
         .avatar-container i {
-            font-size: 50px;
-            color: var(--dark-color);
+            font-size: 55px;
+            color: #FFB100;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         /* ส่วนเนื้อหา */
         .profile-body {
-            padding: 80px 30px 40px 30px;
+            padding: 70px 25px 35px 25px;
             text-align: center;
         }
 
         .profile-name {
             font-size: 24px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .profile-nickname {
-            font-size: 18px;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 30px;
-            background-color: #FFFBEB;
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            border: 1px solid #FFEAA7;
+            font-size: 15px;
+            color: #E29A03;
+            font-weight: 500;
+            margin-bottom: 25px;
+            background-color: #FFF9E1;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px dashed #FFD23F;
         }
 
         /* รายละเอียดข้อมูล */
         .info-list {
             text-align: left;
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .info-item {
             display: flex;
             align-items: center;
-            background-color: var(--light-bg);
-            padding: 15px 20px;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            transition: all 0.2s ease;
+            background-color: #FFFFFF;
+            padding: 14px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 222, 180, 0.2);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .info-item:hover {
-            background-color: #FFFDF0;
-            border-left: 4px solid var(--primary-hover);
-            padding-left: 16px;
+            background-color: #FFFDF7;
+            border-color: var(--primary-accent);
+            transform: scale(1.02) translateX(4px);
         }
 
         .info-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #FFFFFF;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-right: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            font-size: 18px;
         }
 
-        .info-icon i {
-            font-size: 18px;
-            color: var(--dark-color);
-        }
+        /* สีกรอบไอคอนโทนพาสเทล */
+        .bg-birthday { background-color: #FFF0F0; color: #FF6B6B; }
+        .bg-food { background-color: #F1F3F5; color: #495057; }
+        .bg-color { background-color: #FFFBE6; color: #FFD23F; }
+        .bg-subject { background-color: #EBF3FF; color: #4D96FF; }
+        .bg-friend { background-color: #E8F7EC; color: #4CAF50; }
 
         .info-content .label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             display: block;
-            margin-bottom: 2px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 1px;
         }
 
         .info-content .value {
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
             color: var(--dark-color);
         }
 
@@ -166,10 +195,10 @@
         .color-dot {
             width: 14px;
             height: 14px;
-            background-color: #FFDE4D;
+            background-color: var(--primary-accent);
             border-radius: 50%;
             display: inline-block;
-            border: 1px solid #E6C229;
+            box-shadow: 0 2px 5px rgba(255, 210, 63, 0.5);
         }
     </style>
 </head>
@@ -178,18 +207,20 @@
     <div class="profile-card">
         <div class="profile-header">
             <div class="avatar-container">
-                <i class="fa-solid fa-face-smile-wink"></i>
+                <i class="fa-solid fa-star"></i>
             </div>
         </div>
 
         <div class="profile-body">
             <h1 class="profile-name">ด.ญ.ณัฐกมล ทาเกิด</h1>
-            <p class="profile-nickname">ชื่อเล่น: <b>ข้าวฟ่าง</b></p>
+            <div class="profile-nickname">
+                <i class="fa-solid fa-sparkles"></i> ชื่อเล่น: <b>ข้าวฟ่าง</b>
+            </div>
 
             <div class="info-list">
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-cake-candles" style="color: #FF6B6B;"></i>
+                    <div class="info-icon bg-birthday">
+                        <i class="fa-solid fa-cake-candles"></i>
                     </div>
                     <div class="info-content">
                         <span class="label">วันเกิด</span>
@@ -198,8 +229,8 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-utensils" style="color: #495057;"></i>
+                    <div class="info-icon bg-food">
+                        <i class="fa-solid fa-bowl-food"></i>
                     </div>
                     <div class="info-content">
                         <span class="label">อาหารที่ชอบ</span>
@@ -208,8 +239,8 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-palette" style="color: #F4CE14;"></i>
+                    <div class="info-icon bg-color">
+                        <i class="fa-solid fa-palette"></i>
                     </div>
                     <div class="info-content">
                         <span class="label">สีที่ชอบ</span>
@@ -220,8 +251,8 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-book-open" style="color: #4D96FF;"></i>
+                    <div class="info-icon bg-subject">
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
                     <div class="info-content">
                         <span class="label">วิชาที่ชอบ</span>
@@ -230,8 +261,8 @@
                 </div>
 
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-users" style="color: #6BCB77;"></i>
+                    <div class="info-icon bg-friend">
+                        <i class="fa-solid fa-heart"></i>
                     </div>
                     <div class="info-content">
                         <span class="label">เพื่อนสนิท</span>
