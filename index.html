@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ประวัติส่วนตัว - น้องข้าวฟ่างง</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Prompt for Thai language -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
@@ -98,7 +95,6 @@
 </head>
 <body class="min-h-screen text-gray-800 p-4 md:p-8 flex items-center justify-center relative overflow-x-hidden">
 
-    <!-- Action Buttons (Hidden on Print) -->
     <div class="fixed top-4 right-4 z-50 print-hidden">
         <button onclick="window.print()" class="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-medium py-2 px-4 rounded-full shadow-lg flex items-center gap-2 transition-all transform hover:scale-105">
             <i data-lucide="printer" class="w-5 h-5"></i>
@@ -106,19 +102,19 @@
         </button>
     </div>
 
-    <!-- Main Card -->
     <div class="card-container relative z-10 w-full max-w-4xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border-4 border-yellow-100">
-        <!-- Background Decor -->
         <div class="blob-bg"></div>
         <div class="blob-bg-2"></div>
 
         <div class="relative z-10">
-            <!-- Header Section -->
             <header class="bg-gradient-to-r from-yellow-300 to-yellow-100 p-8 md:p-10 text-center relative border-b-4 border-yellow-400">
-                <!-- Cute Cartoon / Avatar Area -->
+                
+                <img src="https://adaymagazine.com/wp-content/uploads/2019/03/Type-B_Featured_%E0%B9%80%E0%B8%89%E0%B9%8A%E0%B8%B2%E0%B8%81%E0%B9%8B%E0%B8%A7%E0%B8%A2-scaled.jpg"
+                     alt="รูปภาพประกอบส่วนหัว"
+                     class="mx-auto w-40 h-40 object-cover rounded-full border-4 border-yellow-200 shadow-lg mb-6 relative z-10">
+
                 <div class="mx-auto w-32 h-32 bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center text-5xl mb-4 relative z-10">
                     👧🏻🌻
-                    <!-- Sparkle accents -->
                     <div class="absolute -top-2 -right-2 text-2xl animate-pulse">✨</div>
                     <div class="absolute -bottom-2 -left-2 text-2xl">💫</div>
                 </div>
@@ -131,14 +127,11 @@
                 </div>
             </header>
 
-            <!-- Body Section -->
             <main class="p-8 md:p-10">
                 <div class="section-grid grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- Left Column -->
                     <div class="space-y-8">
                         
-                        <!-- Personal Info -->
                         <section>
                             <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-600 border-b-2 border-yellow-200 pb-2">
                                 <i data-lucide="user" class="w-5 h-5"></i> ข้อมูลส่วนตัว
@@ -166,7 +159,6 @@
                             </ul>
                         </section>
 
-                        <!-- Education -->
                         <section>
                             <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-600 border-b-2 border-yellow-200 pb-2">
                                 <i data-lucide="book-open" class="w-5 h-5"></i> การเรียน & กิจกรรม
@@ -189,10 +181,8 @@
 
                     </div>
 
-                    <!-- Right Column -->
                     <div class="space-y-8">
                         
-                        <!-- Lifestyle & Favorites -->
                         <section>
                             <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-600 border-b-2 border-yellow-200 pb-2">
                                 <i data-lucide="star" class="w-5 h-5"></i> ความชอบ & ไลฟ์สไตล์
@@ -225,7 +215,6 @@
                             </ul>
                         </section>
 
-                        <!-- Dream Career -->
                         <section>
                             <div class="bg-yellow-50 rounded-2xl p-5 border border-yellow-200 shadow-sm relative overflow-hidden">
                                 <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
@@ -241,10 +230,8 @@
                     </div>
                 </div>
 
-                <!-- Bottom Section (Skills & Motto) -->
                 <div class="mt-8 space-y-8">
                     
-                    <!-- Skills (Tags/Pills) -->
                     <section>
                         <h2 class="text-xl font-bold mb-4 text-center text-yellow-600">ทักษะความสามารถ</h2>
                         <div class="flex flex-wrap justify-center gap-3">
@@ -260,7 +247,6 @@
                         </div>
                     </section>
 
-                    <!-- Motto -->
                     <section class="text-center">
                         <div class="inline-block relative">
                             <i data-lucide="quote" class="w-8 h-8 text-yellow-200 absolute -top-4 -left-6 transform rotate-180"></i>
@@ -274,19 +260,14 @@
                 </div>
             </main>
             
-            <!-- Footer -->
             <footer class="bg-yellow-50 text-center py-4 text-sm text-yellow-700/60 font-medium rounded-b-[2.5rem]">
                 Made with 💛 | Student Profile Card
             </footer>
         </div>
     </div>
 
-    <!-- Initialize Lucide Icons -->
     <script>
         lucide.createIcons();
     </script>
 </body>
-    <img src=https://adaymagazine.com/wp-content/uploads/2019/03/Type-B_Featured_%E0%B9%80%E0%B8%89%E0%B9%8A%E0%B8%B2%E0%B8%81%E0%B9%8B%E0%B8%A7%E0%B8%A2-scaled.jpg
-         alt="รูปภาพตัวอย่าง"
-         width="300">
 </html>
